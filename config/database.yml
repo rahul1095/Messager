@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: root
+  password: root
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: messager_api_development
+  
+test:
+  <<: *default
+  database: messager_api_test
+
+production:
+  <<: *default
+  database: bricsand_api_production
+  username: bricsand_api
+  password: <%= ENV['BRICSAND_API_DATABASE_PASSWORD'] %>
+  
